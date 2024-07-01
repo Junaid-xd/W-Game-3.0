@@ -1,0 +1,118 @@
+.authorize-popup-div{
+  background-color: black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 50%;
+  z-index: 1;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 5px yellow;
+}
+
+.wrapper-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.question-div,
+.answer-div{
+  display: flex;
+  background-color: black;
+  padding: 5px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.question-div p,
+.answer-div p{
+  color: #fff;
+}
+
+
+.btn-div{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+.check-btn{
+  background-color: green;
+  color: #fff;
+  padding: 5px;
+}
+.random-btn{
+  background-color: green;
+  color: #fff;
+  padding: 5px;
+}
+
+.cancel-div{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: end;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.span-s{
+  background-color: red;
+  padding: 5px 10px;
+  color: #fff;
+  cursor: pointer;
+  /* border: 1px solid black; */
+}
+
+.hide-it{
+  display: none;
+}
+
+.wrapper-div input{
+  width: 70%;
+  padding: 5px;
+}
+
+.upper-div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.write-div{
+  display: flex;
+  width: 100%;
+  font-size: 17px;
+  font-weight: bold;
+  color: red;
+  padding-left: 5px;
+}
+.cancel-div{
+  width: 10%;
+}
+
+.error-div{
+  margin-top: 10px;
+  color: red;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+
+
+
+
+
+@media (max-width : 980px){
+  .authorize-popup-div{
+    width: 90%;
+  }
+  .wrapper-div input{
+    font-size: 10px;
+    font-weight: bold;
+  }
+}
