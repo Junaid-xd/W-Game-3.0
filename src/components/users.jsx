@@ -214,9 +214,6 @@ function Users() {
   const pickPhrase = useCallback(()=>{
     if(status){
       reset();
-      // document.querySelector('.error-div').innerHTML = "";
-      // document.querySelector('.nameDiv').innerHTML = "";
-      // document.querySelector('.emojiDiv').innerHTML = "";
       const index = Math.floor(Math.random() * phrases.length);
       status = false;
       incrementCount();
@@ -307,16 +304,43 @@ function Users() {
 
   useEffect(()=>{
     if(authorizeUser){
-      document.querySelector('.authorize-btn-div').classList.add('hide-authorize-btn');
+      document.querySelector('.authorize-btn').classList.add('hide-authorize-btn');
       document.querySelector('.verify-msg-div').classList.remove('hide-authorize-btn');
-      document.querySelector('.verify-msg-div').innerHTML = "JEO USER VERIFIED ✅"
-      //console.log("This is count: ", cookBtnCount);
+      document.querySelector('.verify-msg-div').innerHTML = "🟢 JEO USER VERIFIED";
+      document.querySelector('.info-data-div').innerHTML = `names: ${data.length},   emojis: ${emojis.length}, pickachu: ${nons.length}, images: ${images.length}, phrases: ${phrases.length}`;
     }else{
-      document.querySelector('.authorize-btn').innerHTML = "Un-Authorized";
+      document.querySelector('.authorize-btn').innerHTML = "Not Verified";
       document.querySelector('.verify-msg-div').classList.add('hide-authorize-btn');
+      document.querySelector('.info-data-div').innerHTML = `names: ${data.length},   emojis: ${emojis.length}, pickachu: ${nons.length}, images: ${images.length}`;
     }
   },[authorizeUser, setAuthorizeUser])
   
+
+
+
+
+  const [bgColor, setBgColor] = useState('#F59E0B');
+
+  useEffect(() => {
+    const colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#A133FF', '#F59E0B','#FF69B4', '#E6E6FA', '#FF7F50','#00FFCC', '#BFFF00'];
+    
+    const changeBackgroundColor = () => {
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      setBgColor(randomColor);
+    };
+
+  
+    changeBackgroundColor();
+    const intervalId = setInterval(changeBackgroundColor, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+
+
+
+
+
   
   return (
     <>
@@ -325,23 +349,25 @@ function Users() {
       </div>
 
       <div className='font-bold mb-10 text-9xl text-cyan-300 propp'>{prop}</div>
-      <div className='flex justify-center bg-yellow-500 items-center p-2 flex-col relative'>
+      <div className='flex justify-center items-center p-2 flex-col relative' style={{backgroundColor: bgColor, transition: 'background-color 0.5s ease'}}>
         <div className='flex flex-col'>
           <div>
-            <div>
-              <div className='flex justify-start text-gray-700 info-div'>names: {data.length},   emojis: {emojis.length}, pickachu: {nons.length}, images: {images.length}, phrase: {phrases.length}</div>
+            <div className='info-div'>
+              <div className='flex justify-start text-gray-700 info-data-div'></div>
+              <div className='verify-msg-div'></div>
             </div>
-            <div className='flex justify-center '>
-              <div>
-                <input type="text" placeholder='Enter Literally Anything' className='p-2 texttt mt-2' />
+            <div className='inputEle-btn-div'>
+              <div className='inputEle-addBtn-div'>
+                <input type="text" placeholder='Enter Literally Anything' className='p-2 texttt mt-2 border-2 border-black' />
+                <button className='ml-5 bg-green-700 p-1 text-white mt-2 border-2 border-black addPropBtn' onClick={addProperty}>Add Property</button>
               </div>
-              <div className='flex justify-center absolute right-1'>
-                <button className='bg-red-500 p-1 text-white mt-2' onClick={resetBtnFun}>Reset</button>
+              <div className=' reset-btn-div'>
+                <button className='bg-red-600 p-1 text-white border-2 border-black' onClick={resetBtnFun}>Reset</button>
               </div>
             </div>
-            <div>
-              <button className='ml-5 bg-green-700 p-1 text-white mt-2 addPropBtn' onClick={addProperty}>Add Property</button>
-            </div>
+            {/* <div>
+              
+            </div> */}
           </div>
 
           <div className='grid [grid-template-columns:1fr_1fr_1fr] gap-4 mt-4'>
@@ -358,15 +384,20 @@ function Users() {
 
         
 
-        <div className='text-red-500 font-bold mt-4 error-div'></div>
+        
 
 
 
-        <div className='flex w-full justify-end mt-5'>
-          <div className='authorize-btn-div'>
-            <button className='authorize-btn' onClick={displayAuthorize}>Authorized</button>
+        <div className='lower-div'>
+          
+          <div className='for-error-div'>
+            <div className='error-div'></div>
           </div>
-          <div className='verify-msg-div'></div>
+
+          <div className='authorize-btn-div'>
+            <button className='authorize-btn' onClick={displayAuthorize}></button>
+          </div>
+          
         </div>
 
 
