@@ -4,7 +4,7 @@ import './authorize.css'
 const questions = [
   {question:"Who is the biggest Non?", answer:"non admin"},
   {question:"What is the rating of W Game?", answer:"infinity"},
-  {question:"Who is the best girl?", answer:"your mom"},
+  {question:"Who is the best girl?", answer:"italian girl"},
   {question:"W Game is the best game?", answer:"1"},
   {question:"Will Ibrahim go to NUST?", answer:"100%"},
   {question:"Who is the captain of Non-FC?", answer:"undefined"},
@@ -40,11 +40,11 @@ function Authorize({displayFun, setAuthorizeUser}) {
     }
     else{
       document.querySelector('.answer-input-ele').value = "";
-      document.querySelector('.error-div').innerHTML="it seems like you are not a jeo user*"
+      document.querySelector('.error-msg-div').innerHTML="it seems like you are not a jeo user*"
       renderQuestion();
       setTimeout(()=>{
-        document.querySelector('.error-div').innerHTML = "";
-      },4000)
+        document.querySelector('.error-msg-div').innerHTML = "";
+      },3000)
     }
   }
    
@@ -74,7 +74,7 @@ function Authorize({displayFun, setAuthorizeUser}) {
           </div>
         </div>
 
-        <div className='error-div'>
+        <div className='error-msg-div'>
 
         </div>
         <div className="btn-div">

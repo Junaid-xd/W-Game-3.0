@@ -89,6 +89,8 @@ function Users() {
   const [random, setRandom] = useState("");
   const [showAuthorize, setShowAuthorize] = useState(false);
   const [authorizeUser, setAuthorizeUser] = useState(false);
+  const [bgColor, setBgColor] = useState('#F59E0B');
+  const [colorOfName, setColorOfName] = useState('#FFF');
   const [cookBtnCount, setCookBtnCount] = useState(() => {
     const savedCount = localStorage.getItem('buttonCount');
     return savedCount !== null ? JSON.parse(savedCount) : 0;
@@ -110,6 +112,12 @@ function Users() {
   }, [cookBtnCount]);
 
 
+  const showError= ()=>{
+    document.querySelector('.error-div').innerHTML = "Enter New Property first*";
+    setTimeout(()=>{
+      document.querySelector('.error-div').innerHTML = "";
+    },3000)
+  }
 
   const resetCount = ()=>{
     setCookBtnCount(0);
@@ -150,7 +158,7 @@ function Users() {
     }
     else{
       reset();
-      document.querySelector('.error-div').innerHTML = "Enter New Property first*";
+      showError();
     }
 
     
@@ -160,8 +168,6 @@ function Users() {
 
     if(status){
       reset();
-      // document.querySelector('.error-div').innerHTML = "";
-      // document.querySelector('.emojiDiv').innerHTML = "";
       const index = Math.floor(Math.random() * emojis.length);
       status = false;
       incrementCount();
@@ -169,7 +175,7 @@ function Users() {
     }
     else{
       reset();
-      document.querySelector('.error-div').innerHTML = "Enter New Property first*";
+      showError();
     }
 
 
@@ -177,8 +183,6 @@ function Users() {
 
   const pickNon = useCallback(()=>{
     if(status){
-      // document.querySelector('.error-div').innerHTML = "";
-      // document.querySelector('.nameDiv').innerHTML = "";
       reset();
       const index = Math.floor(Math.random() * nons.length);
       status = false;
@@ -187,7 +191,7 @@ function Users() {
     }
     else{
       reset();
-      document.querySelector('.error-div').innerHTML = "Enter New Property first*";
+      showError();
     }
 
   },[non, setNon]);
@@ -195,8 +199,6 @@ function Users() {
   const renderImg = useCallback(()=>{
     if(status){
       reset();
-      // document.querySelector('.error-div').innerHTML = "";
-      // document.querySelector('.nonDiv').innerHTML = "";
       const index = Math.floor(Math.random() * images.length);
       status = false;
       incrementCount();
@@ -204,7 +206,7 @@ function Users() {
     }
     else{
       reset();
-      document.querySelector('.error-div').innerHTML = "Enter New Property first*";
+      showError();
     }
 
     
@@ -221,7 +223,7 @@ function Users() {
     }
     else{
       reset();
-      document.querySelector('.error-div').innerHTML = "Enter New Property first*";
+      showError();
     }
 
   },[phrase, setPhrase]);
@@ -320,10 +322,10 @@ function Users() {
 
 
 
-  const [bgColor, setBgColor] = useState('#F59E0B');
+
 
   useEffect(() => {
-    const colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#A133FF', '#F59E0B','#FF69B4', '#E6E6FA', '#FF7F50','#00FFCC', '#BFFF00'];
+    const colors = ['#33FF57', '#3357FF', '#FF33A1', '#A133FF', '#F59E0B','#FF69B4', '#E6E6FA', '#FF7F50','#00FFCC', '#BFFF00'];
     
     const changeBackgroundColor = () => {
       const randomColor = colors[Math.floor(Math.random() * colors.length)];
@@ -331,8 +333,36 @@ function Users() {
     };
 
   
+    // changeBackgroundColor();
+
+    const intervalId = setInterval(changeBackgroundColor, 40000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+
+
+  useEffect(() => {
+
+    const colors = [
+      '#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#FF69B4', 
+      '#E6E6FA', '#FF7F50', '#00FFCC', '#BFFF00', '#FFD700', 
+      '#00FF00', '#00FFFF', '#7FFF00', '#FF00FF', '#00FA9A', 
+      '#ADFF2F', '#FF1493', '#FFF', '#8A2BE2', '#DEB887', 
+      '#5F9EA0', '#7FFFD4', '#6495ED', '#DC143C', '#FFA07A', 
+      '#1E90FF', '#FF6347', '#20B2AA', '#FFC0CB', '#00BFFF', 
+      '#87CEEB', '#00FF7F', '#F0E68C', '#40E0D0', '#3CB371', 
+      '#FF4500', '#FA8072'
+    ];
+    
+    const changeBackgroundColor = () => {
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      setColorOfName(randomColor);
+    };
+
+  
     changeBackgroundColor();
-    const intervalId = setInterval(changeBackgroundColor, 5000);
+    const intervalId = setInterval(changeBackgroundColor, 400);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -345,12 +375,17 @@ function Users() {
   
   return (
     <>
+      <div className='game-name' style={{color: colorOfName, transition: 'background-color 0.5s ease'}}>
+        W GAME
+      </div>
+
       <div>
         {showAuthorize && <Authorize displayFun={displayAuthorize} setAuthorizeUser={setAuthorizeUser}/>}
       </div>
 
-      <div className='font-bold mb-10 text-9xl text-cyan-300 propp'>{prop}</div>
-      <div className='flex justify-center items-center p-2 flex-col relative' style={{backgroundColor: bgColor, transition: 'background-color 0.5s ease'}}>
+      <div className='propp'>{prop}</div>
+
+      <div className='main-div' style={{backgroundColor: bgColor, transition: 'background-color 0.5s ease', boxShadow: `0px 0px 15px 5px ${colorOfName}` }}>
         <div className='flex flex-col'>
           <div>
             <div className='info-div'>
@@ -366,17 +401,14 @@ function Users() {
                 <button className='bg-red-600 p-1 text-white border-2 border-black' onClick={resetBtnFun}>Reset</button>
               </div>
             </div>
-            {/* <div>
-              
-            </div> */}
           </div>
 
           <div className='grid [grid-template-columns:1fr_1fr_1fr] gap-4 mt-4'>
-            <button className=' bg-black text-cyan-200 rNameBtn' onClick={renderUser}>Pick Random Name</button>
-            <button className=' bg-black text-cyan-200  rUsBtn' onClick={pickNon}>Pickachu 🐤</button>
-            <button className=' bg-black text-cyan-200  rEmojiBtn' onClick={renderEmoji}>Pick Random Emoji 🗿</button>
-            <button className=' bg-black text-cyan-200  rImgBtn' onClick={renderImg}>Pick Random Image 📷</button>
-            <button className=' bg-black text-cyan-200 rPhraseBtn' onClick={pickPhrase} disabled={!authorizeUser} >Pick Random Phrase</button>
+            <button className=' bg-black text-white rNameBtn' onClick={renderUser}>Pick Random Name</button>
+            <button className=' bg-black text-white  rUsBtn' onClick={pickNon}>Pickachu 🐤</button>
+            <button className=' bg-black text-white  rEmojiBtn' onClick={renderEmoji}>Pick Random Emoji 🗿</button>
+            <button className=' bg-black text-white rImgBtn' onClick={renderImg}>Pick Random Image 📷</button>
+            <button className=' bg-black text-white rPhraseBtn' onClick={pickPhrase} disabled={!authorizeUser} >Pick Random Phrase</button>
             <button className=' bg-black text-cyan-200 cook-btn' onClick={randomizeEverything} disabled={!authorizeUser} >Let W-Game Cook</button>
 
             
@@ -411,7 +443,7 @@ function Users() {
       
 
       <div className='font-bold text-2xl mt-10 phraseDiv text-cyan-300 ' >{phrase}</div>
-      <div className='font-bold text-9xl mt-10 nameDiv text-cyan-300 '>{user}</div>
+      <div className='font-bold text-9xl mt-5 nameDiv text-cyan-300 '>{user}</div>
       <div className='font-bold text-9xl mt-10 nonDiv text-red-500 '>{non}</div>
       <div className='font-bold text-9xl mt-10 emojiDiv text-cyan-300 ' >{emoji}</div>
       <div className='font-bold text-9xl mt-10 randomDiv text-green-400 ' >{random}</div>

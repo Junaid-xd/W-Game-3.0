@@ -30,7 +30,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
   background-color: black;
@@ -77,19 +77,30 @@ button:focus-visible {
   }
 }
 
+.game-name{
+  font-size: 60px;
+  font-weight: bolder;
+}
 
 
+.useless-div{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
 
-
-/* .rPhraseBtn:hover,
-.rImgBtn:hover,
-.rEmojiBtn:hover,
-.rUsBtn:hover,
-.rNameBtn:hover{
-  border-color: #646cff;
-  background-color: cyan;
-  color: black;
-} */
+.main-div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  padding: 10px;
+  border: 2px solid black;
+  /* box-shadow: 0px 0px 15px 5px #fff; */
+  border-radius: 20px;
+}
 
 
 .addPropBtn:hover{
@@ -135,7 +146,7 @@ button:disabled:hover{
   display: none;
 }
 
-/* .verify-msg-div{
+.verify-msg-div{
   color: green;
   font-weight: bold;
   font-size: 10px;
@@ -143,7 +154,7 @@ button:disabled:hover{
   background-color: #fff;
   padding: 0px 1px;
   padding-left: 4px;
-} */
+}
 .verify-msg-div:empty{
   border: none;
   background-color: transparent;
@@ -153,7 +164,7 @@ button:disabled:hover{
   display: flex;
   align-items: center;
   justify-content: end;
-  width: 30%;
+  width: 35%;
   /* background-color: orange; */
 }
 
@@ -248,8 +259,22 @@ button:disabled:hover{
 
 
 
+.propp{
+  margin-top: 80px;
+  margin-bottom: 20px;
+  color: cyan;
+  font-weight: bold;
+  word-wrap: break-word;       
+  overflow-wrap: break-word;   
+  white-space: normal;
+  overflow: auto;     
+  width: 100%;  
+  font-size: 40px;
+}
 
-
+.propp:empty{
+  margin-top: 110px;
+}
 
 
 
@@ -263,11 +288,15 @@ button:disabled:hover{
 
   .nameDiv,
   .nonDiv,
-  .emojiDiv,
-  .propp{
-    font-size: 55px;
+  .emojiDiv{
+    font-size: 40px;
   }
 
+
+  .propp{
+    font-size: 30px; 
+    width: 300px;  
+  }
   .info-div{
     font-size: 5px;
   }
@@ -291,7 +320,8 @@ button:disabled:hover{
 
   .authorize-btn{
     border-radius: 1px solid black;
-    padding: 2px;
+    padding: 5px;
+    font-size: 10px;
   }
 
   .verify-msg-div{
