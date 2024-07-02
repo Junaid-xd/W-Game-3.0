@@ -304,7 +304,8 @@ function Users() {
 
   useEffect(()=>{
     if(authorizeUser){
-      document.querySelector('.authorize-btn').classList.add('hide-authorize-btn');
+      //document.querySelector('.authorize-btn').classList.add('hide-authorize-btn');
+      document.querySelector('.authorize-btn-div').remove();
       document.querySelector('.verify-msg-div').classList.remove('hide-authorize-btn');
       document.querySelector('.verify-msg-div').innerHTML = "🟢 JEO USER VERIFIED";
       document.querySelector('.info-data-div').innerHTML = `names: ${data.length},   emojis: ${emojis.length}, pickachu: ${nons.length}, images: ${images.length}, phrases: ${phrases.length}`;
