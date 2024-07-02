@@ -7,9 +7,15 @@ const questions = [
   {question:"Who is the best girl?", answer:"italian girl"},
   {question:"W Game is the best game?", answer:"1"},
   {question:"Will Ibrahim go to NUST?", answer:"100%"},
-  {question:"Who is the captain of Non-FC?", answer:"undefined"},
   {question:"Who is coming in 2 minutes?", answer:"mehroz bhai"},
-  {question:"Which is the best version of W Game?", answer:"yet to come"}
+  {question:"Which is the best version of W Game?", answer:"yet to come"},
+  {question:"Who is the biggest fraud?", answer:"poty brothers"},
+  {question:"What is the strongest material?", answer:"rod"},
+  {question:"Which thing has the most weight on earth?", answer:"khali"},
+  {question:"Guess where am I?", answer:"dubai"},
+  {question:"What is the best time?", answer:"2:45 am"},
+  {question:"Which is the most dangerous attack?", answer:"gujrati attack"}
+  //{question:"", answer:""}
   // {question:"", answer:""}
 ];
 
@@ -66,7 +72,7 @@ function Authorize({displayFun, setAuthorizeUser}) {
 
           <div className='question-div'>
             <p>Question: </p>
-            <input type="text" readOnly value={query}/>
+            <input type="text" readOnly value={query} style={{userSelect:"none", pointerEvents: "none"}}/>
           </div>
           <div className='answer-div'>
             <p>Answer:</p>

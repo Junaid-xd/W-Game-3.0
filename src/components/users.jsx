@@ -91,6 +91,8 @@ function Users() {
   const [authorizeUser, setAuthorizeUser] = useState(false);
   const [bgColor, setBgColor] = useState('#F59E0B');
   const [colorOfName, setColorOfName] = useState('#FFF');
+  const [colorOfCookBtn, setColorOfCookBtn,] = useState('#808080');
+  const [colorOfVerification, setColorOfVerification] = useState('#006400');
   const [cookBtnCount, setCookBtnCount] = useState(() => {
     const savedCount = localStorage.getItem('buttonCount');
     return savedCount !== null ? JSON.parse(savedCount) : 0;
@@ -274,7 +276,7 @@ function Users() {
     else{
       reset();
       setRandom("");
-      document.querySelector('.error-div').innerHTML = `use other features ${limit-cookBtnCount} more times to unlock this feature*`;
+      document.querySelector('.error-div').innerHTML = `use other features ${limit-cookBtnCount} more times to unlock this button*`;
       
       setTimeout(()=>{
         document.querySelector('.error-div').innerHTML = "";
@@ -306,8 +308,9 @@ function Users() {
 
   useEffect(()=>{
     if(authorizeUser){
-      //document.querySelector('.authorize-btn').classList.add('hide-authorize-btn');
-      document.querySelector('.authorize-btn-div').remove();
+      if(document.querySelector('.authorize-btn-div')){
+        document.querySelector('.authorize-btn-div').remove();
+      }
       document.querySelector('.verify-msg-div').classList.remove('hide-authorize-btn');
       document.querySelector('.verify-msg-div').innerHTML = "🟢 JEO USER VERIFIED";
       document.querySelector('.info-data-div').innerHTML = `names: ${data.length},   emojis: ${emojis.length}, pickachu: ${nons.length}, images: ${images.length}, phrases: ${phrases.length}`;
@@ -322,18 +325,32 @@ function Users() {
 
 
 
-
+ 
 
   useEffect(() => {
-    const colors = ['#33FF57', '#3357FF', '#FF33A1', '#A133FF', '#F59E0B','#FF69B4', '#E6E6FA', '#FF7F50','#00FFCC', '#BFFF00'];
+
+    const colorPairs = [
+      { bg: '#33FF57', text: '#3357FF' }, // green background with blue text
+      { bg: '#3357FF', text: '#FFFFFF' }, // blue background with whitetext
+      { bg: '#FF33A1', text: '#006400' }, // pink background with green text
+      { bg: '#A133FF', text: '#000000' }, // purple background with black text
+      { bg: '#F59E0B', text: '#000000' }, // orange background with black text
+      { bg: '#FF69B4', text: '#3357FF' }, // hot pink background with cyan text
+      { bg: '#E6E6FA', text: '#000000' }, // lavender background with purple text
+      { bg: '#FF7F50', text: '#000000' }, // coral background with black text
+      { bg: '#00FFCC', text: '#000000' }, // cyan background with purple text
+      { bg: '#BFFF00', text: '#3357FF' }  // lime background with blue text
+    ];
     
     const changeBackgroundColor = () => {
-      const randomColor = colors[Math.floor(Math.random() * colors.length)];
-      setBgColor(randomColor);
+      const randomColor = colorPairs[Math.floor(Math.random() * colorPairs.length)];
+      setBgColor(randomColor.bg);
+      setColorOfVerification(randomColor.text);
+      
     };
 
   
-    // changeBackgroundColor();
+    changeBackgroundColor();
 
     const intervalId = setInterval(changeBackgroundColor, 40000);
 
@@ -358,6 +375,12 @@ function Users() {
     const changeBackgroundColor = () => {
       const randomColor = colors[Math.floor(Math.random() * colors.length)];
       setColorOfName(randomColor);
+      if(cookBtnCount>=limit && authorizeUser){
+        setColorOfCookBtn(randomColor);
+      }
+      else{
+        setColorOfCookBtn('#808080');
+      }
     };
 
   
@@ -365,7 +388,7 @@ function Users() {
     const intervalId = setInterval(changeBackgroundColor, 400);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [cookBtnCount, setColorOfCookBtn, authorizeUser, setAuthorizeUser]);
 
 
 
@@ -390,7 +413,7 @@ function Users() {
           <div>
             <div className='info-div'>
               <div className='flex justify-start text-gray-700 info-data-div'></div>
-              <div className='verify-msg-div'></div>
+              <div className='verify-msg-div' style={{color: colorOfVerification}}></div>
             </div>
             <div className='inputEle-btn-div'>
               <div className='inputEle-addBtn-div'>
@@ -409,7 +432,7 @@ function Users() {
             <button className=' bg-black text-white  rEmojiBtn' onClick={renderEmoji}>Pick Random Emoji 🗿</button>
             <button className=' bg-black text-white rImgBtn' onClick={renderImg}>Pick Random Image 📷</button>
             <button className=' bg-black text-white rPhraseBtn' onClick={pickPhrase} disabled={!authorizeUser} >Pick Random Phrase</button>
-            <button className=' bg-black text-cyan-200 cook-btn' onClick={randomizeEverything} disabled={!authorizeUser} >Let W-Game Cook</button>
+            <button className=' bg-black text-cyan-200 cook-btn' onClick={randomizeEverything} disabled={!authorizeUser} style={{color:colorOfCookBtn}}>Let W-Game Cook</button>
 
             
           </div>
