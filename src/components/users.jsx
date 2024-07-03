@@ -392,11 +392,19 @@ function Users() {
     const intervalId = setInterval(changeBackgroundColor, 400);
 
     return () => clearInterval(intervalId);
-  }, [cookBtnCount, setColorOfCookBtn, authorizeUser, setAuthorizeUser, colorOfBoxShadow, setColorOfBoxShadow]);
+  }, [cookBtnCount, limit, authorizeUser]);
 
 
 
+  const [reloadKey, setReloadKey] = useState(0);
 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setReloadKey(prevKey => prevKey + 1);
+    }, 15000); // 20000 milliseconds = 20 seconds
+
+    return () => clearInterval(intervalId); // Cleanup interval on component unmount
+  }, []);
 
 
   
@@ -404,6 +412,11 @@ function Users() {
     <>
       <div className='game-name' style={{color: colorOfName, transition: 'background-color 0.5s ease'}}>
         W GAME
+      </div>
+      <div key={reloadKey} className='flex justify-center'>
+        <marquee behavior="slide" direction="right" scrollamount="5" className='slider-tag' style={{textShadow: `2px 2px 1px ${colorOfVerification}`}}>
+          <p>JD PRODUCTIONS</p>
+        </marquee>
       </div>
 
       <div>
