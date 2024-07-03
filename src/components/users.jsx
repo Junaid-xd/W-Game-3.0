@@ -93,6 +93,7 @@ function Users() {
   const [colorOfName, setColorOfName] = useState('#FFF');
   const [colorOfCookBtn, setColorOfCookBtn,] = useState('#808080');
   const [colorOfVerification, setColorOfVerification] = useState('#006400');
+  const [colorOfBoxShadow, setColorOfBoxShadow] = useState('');
   const [cookBtnCount, setCookBtnCount] = useState(() => {
     const savedCount = localStorage.getItem('buttonCount');
     return savedCount !== null ? JSON.parse(savedCount) : 0;
@@ -338,8 +339,8 @@ function Users() {
       { bg: '#FF69B4', text: '#3357FF' }, // hot pink background with cyan text
       { bg: '#E6E6FA', text: '#000000' }, // lavender background with purple text
       { bg: '#FF7F50', text: '#000000' }, // coral background with black text
-      { bg: '#00FFCC', text: '#000000' }, // cyan background with purple text
-      { bg: '#BFFF00', text: '#3357FF' }  // lime background with blue text
+      { bg: '#BFFF00', text: '#3357FF' }, // lime background with blue text
+      { bg: '#00FFCC', text: '#000000' }  // cyan background with purple text
     ];
     
     const changeBackgroundColor = () => {
@@ -373,13 +374,16 @@ function Users() {
     ];
     
     const changeBackgroundColor = () => {
-      const randomColor = colors[Math.floor(Math.random() * colors.length)];
-      setColorOfName(randomColor);
-      if(cookBtnCount>=limit && authorizeUser){
-        setColorOfCookBtn(randomColor);
-      }
-      else{
-        setColorOfCookBtn('#808080');
+      if(authorizeUser){
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        setColorOfName(randomColor);
+        setColorOfBoxShadow(randomColor)
+        if(cookBtnCount>=limit && authorizeUser){
+          setColorOfCookBtn(randomColor);
+        }
+        else{
+          setColorOfCookBtn('#808080');
+        }
       }
     };
 
@@ -388,7 +392,7 @@ function Users() {
     const intervalId = setInterval(changeBackgroundColor, 400);
 
     return () => clearInterval(intervalId);
-  }, [cookBtnCount, setColorOfCookBtn, authorizeUser, setAuthorizeUser]);
+  }, [cookBtnCount, setColorOfCookBtn, authorizeUser, setAuthorizeUser, colorOfBoxShadow, setColorOfBoxShadow]);
 
 
 
@@ -408,7 +412,7 @@ function Users() {
 
       <div className='propp'>{prop}</div>
 
-      <div className='main-div' style={{backgroundColor: bgColor, transition: 'background-color 0.5s ease', boxShadow: `0px 0px 15px 5px ${colorOfName}` }}>
+      <div className='main-div' style={{backgroundColor: bgColor, transition: 'background-color 0.5s ease', boxShadow: `0px 0px 15px 5px ${colorOfBoxShadow}` }}>
         <div className='flex flex-col'>
           <div>
             <div className='info-div'>
