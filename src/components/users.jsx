@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useCallback } from 'react';
 import React from 'react'
 import Authorize from './authorize';
+import BtnInformation from './Btn-information';
 
 
 const data = [
@@ -98,6 +99,8 @@ function Users() {
     const savedCount = localStorage.getItem('buttonCount');
     return savedCount !== null ? JSON.parse(savedCount) : 0;
   });
+
+  const [infoDisplay, setInfoDisplay] = useState(false);
   
 
   const incrementCount = ()=>{
@@ -309,6 +312,7 @@ function Users() {
 
   useEffect(()=>{
     if(authorizeUser){
+      setInfoDisplay(true);
       if(document.querySelector('.authorize-btn-div')){
         document.querySelector('.authorize-btn-div').remove();
       }
@@ -421,6 +425,10 @@ function Users() {
 
       <div>
         {showAuthorize && <Authorize displayFun={displayAuthorize} setAuthorizeUser={setAuthorizeUser}/>}
+      </div>
+
+      <div>
+        {infoDisplay && <BtnInformation names={data.length} pikachu={nons.length} emojis={emojis.length} images={images.length} phrases={phrases.length} setInfoDisplay={setInfoDisplay}/>}
       </div>
 
       <div className='propp'>{prop}</div>
