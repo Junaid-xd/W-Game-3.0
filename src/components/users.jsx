@@ -10,7 +10,7 @@ const data = [
 ];  
 
 const emojis = [
- "💩", "🔛🔝", "🏳‍🌈", "🤡", "🖕", "🍼", "💀", "®", "🆓", "💯","🗿","🍑", "🐕","🦁","👙","🫦","🫶"
+ "💩", "🔛🔝", "🏳‍🌈", "🤡", "🖕", "🍼", "💀", "®", "🆓", "💯","🗿","🍑", "🐕","🦁","👙","🫦","🫶","🤫","👍"
 ]
 
 const nons = [
@@ -326,10 +326,6 @@ function Users() {
     }
   },[authorizeUser, setAuthorizeUser])
   
-
-
-
-
  
 
   useEffect(() => {
@@ -418,7 +414,7 @@ function Users() {
         W GAME
       </div>
       <div key={reloadKey} className='flex justify-center'>
-        <marquee behavior="slide" direction="right" scrollamount="5" className='slider-tag' style={{textShadow: `2px 2px 1px ${colorOfVerification}`}}>
+        <marquee behavior="slide" direction="right" scrollamount="5" className='slider-tag'>
           <p>JD PRODUCTIONS</p>
         </marquee>
       </div>
@@ -428,7 +424,7 @@ function Users() {
       </div>
 
       <div>
-        {infoDisplay && <BtnInformation names={data.length} pikachu={nons.length} emojis={emojis.length} images={images.length} phrases={phrases.length} setInfoDisplay={setInfoDisplay}/>}
+        {infoDisplay && <BtnInformation names={data.length} pikachu={nons.length} emojis={emojis.length} images={images.length} phrases={phrases.length} setInfoDisplay={setInfoDisplay} limit={limit}/>}
       </div>
 
       <div className='propp'>{prop}</div>

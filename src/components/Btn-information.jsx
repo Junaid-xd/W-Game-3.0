@@ -1,7 +1,7 @@
 import React from 'react'
 import './Btn-information.css'
 
-function BtnInformation({names, pikachu, emojis, images, phrases ,setInfoDisplay}) {
+function BtnInformation({names, pikachu, emojis, images, phrases ,setInfoDisplay, limit}) {
 
 
   const closeInformationPopup = ()=>{
@@ -13,7 +13,7 @@ function BtnInformation({names, pikachu, emojis, images, phrases ,setInfoDisplay
 
       <div className="top-div">
         <div className="heading-div">
-          Buttons Information
+          New Buttons Information
         </div>
         <div className='info-close-btn-div'>
           <button className='info-close-btn' onClick={closeInformationPopup}>X</button>
@@ -22,7 +22,8 @@ function BtnInformation({names, pikachu, emojis, images, phrases ,setInfoDisplay
 
 
      <div className="buttons-info-wrapper">
-      <div className="random-name-div">
+
+        {/* <div className="random-name-div">
           <div className="btn-name"><p>Pick Random Name :</p></div>
           <div className='info-content-div'>
             <p>This button picks a random name among {names} names against a property entered by the user.</p>
@@ -48,7 +49,7 @@ function BtnInformation({names, pikachu, emojis, images, phrases ,setInfoDisplay
           <div className='info-content-div'>
             <p>This button picks a random image among {images} images against a property entered by the user.</p>
           </div>
-        </div>
+        </div> */}
 
         <div className="random-phrase-div">
           <div className="btn-name"><p>Pick Random Phrase :</p></div>
@@ -60,7 +61,7 @@ function BtnInformation({names, pikachu, emojis, images, phrases ,setInfoDisplay
         <div className="cook-div">
           <div className="btn-name"><p>Let W Game Cook :</p></div>
           <div className='info-content-div'>
-            <p>This button randomly choose a phrase among all {phrases} phrases. It will then look if the phrase fits one name or two, and then choose random name or names (depending on the phrase requirement) among all {names} names. At the end, it also choose a random emoji among all {emojis} emojis and then show the entire sentence to user. As this needs to cook so much, so it has a limit of 7.</p>
+            <p>This button randomly choose a phrase among all {phrases} phrases. It will then look if the phrase fits one name or two, and then choose random name or names (depending on the phrase requirement) among all {names} names. At the end, it also choose a random emoji among all {emojis} emojis and then show the entire sentence to user. As this needs to cook so much, so it has a limit of {limit}.</p>
           </div>
         </div>
      </div>

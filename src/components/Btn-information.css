@@ -22,25 +22,21 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 5px;
-  margin-bottom: 10px;
-  /* background-color: white; */
+  padding: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid white;
 }
 .heading-div{
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: rgb(255, 0, 0);
   font-weight: bold;
   font-size: 30px;
   width: 100%;
-
-  /* background-color: yellow; */
 }
 .info-close-btn-div{
   width: 10%;
-
-  /* background-color: purple; */
 }
 .info-close-btn{
   color: #fff;
@@ -66,9 +62,8 @@
   align-items: top;
   justify-content: start;
   font-size: 15px;
-  width: 33%;
-
-  /* background-color: cadetblue; */
+  width: 35%;
+  padding-right: 5px;
 }
 
 .random-name-div,
@@ -82,10 +77,8 @@
   justify-content: space-between;
   width: 100%;
   border-bottom: 2px solid white;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   padding: 0px 5px;
-
-  /* background-color: pink; */
 }
 
 .random-name-div{
@@ -102,8 +95,6 @@
   text-align: justify;
   width: 100%;
   margin-left: 2px;
-
-  /* background-color: brown; */
 }
 
 
@@ -118,13 +109,13 @@
     font-size: 20px;
   }
   .btn-name{
-    font-size: 11px;
+    font-size: 10px;
     width: 28%;
     text-align: start;
   }
 
   .info-content-div{
-    font-size: 12px;
+    font-size: 11px;
     margin-left: 5px;
   }
 
@@ -135,5 +126,7 @@
   .random-phrase-div,
   .cook-div{
     padding: 0;
+    padding-bottom: 5px;
+    margin-bottom: 2px;
   }
 }
