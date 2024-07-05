@@ -6,7 +6,7 @@ import BtnInformation from './Btn-information';
 
 
 const data = [
-  "Junaid" , "Ahmed", "Yaseen", "Ibrahim" , "Jazim", "Niyamat Uncle", "Asim Bhai", "Ruquu", "Sahib", "Hadi", "Asad", "Moosa", "Mubeen", "Poty Brothers", "Babar Azam", "Raja Ali", "NON FC", "Anas", "Khali", "Babuu", "Ronaldo", "Coach", "Shahzad Uncle", "Sonu Jee", "Imtiaz sahb", "Saim", "Mehak Noor","🫵", "Siddu Moose wala", "ALL NON GC", "Tariq Bhai", "Batman", "Rohit Sharma", "Azam Khan", "Messi", "Faizi", "KB Burger", "My Friend", "Heera Gujar", "Haris Haseeb", "Mehroz Bhai", "Amar Faisal", "Italian Girl", "Your MOM", "Sherry Bhai", "Danish Bhai","Booby","Hamza", "Umaڑ", "Dani Mamu", "Ali Noor", "Everyone except you", "Azeem ki kaam wali", "Buu G"
+  "Junaid" , "Ahmed", "Yaseen", "Ibrahim" , "Jazim", "Niyamat Uncle", "Asim Bhai", "Ruquu", "Sahib", "Hadi", "Asad", "Mubeen", "Poty Brothers", "Babar Azam", "Raja Ali", "NON FC", "Anas", "Khali", "Babuu", "Ronaldo", "Coach", "Shahzad Uncle", "Sonu Jee", "Imtiaz sahb", "Saim", "Mehak Noor","🫵", "Siddu Moose wala", "ALL NON GC", "Tariq Bhai", "Batman", "Rohit Sharma", "Azam Khan", "Messi", "Faizi", "KB Burger", "My Friend", "Heera Gujar", "Haris Haseeb", "Mehroz Bhai", "Amar Faisal", "Italian Girl", "Your MOM", "Sherry Bhai", "Danish Bhai","Booby","Hamza", "Dani Mamu", "Ali Noor", "Everyone except you", "Azeem ki kaam wali", "Buu G", "ISSB", "Malinga", "Ana", "Peepa","Mamu", "Umair","Taimoor"
 ];  
 
 const emojis = [
@@ -70,7 +70,14 @@ const phrases = [
   {line:"pipey ki Tiktoks dekh k muth marien gy", category:"d"},
   {line:"dono ki Shahzad Uncle bund marien gy", category:"d"},
   {line:"died due to ligma", category:"d"},
-  {line:"confirm sigma hai", category:"s"}
+  {line:"confirm sigma hai", category:"s"},
+  {line:"muthal hai", category:"s"},
+  {line:"Big Treat dey ga", category:"s"},
+  {line:"Dono ko Shahzad uncle icecream khelayen gy", category:"d"},
+  {line:"Dono Gay hain", category:"d"},
+  {line:"Ruquu ka chupa lagae ga", category:"s"},
+  {line:"floor is lava mein yakki kary ga", category:"s"},
+  {line:"kbi papa nai ban saktey", category:"d"},
 ]
 
 

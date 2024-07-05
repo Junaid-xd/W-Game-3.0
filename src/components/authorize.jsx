@@ -7,14 +7,15 @@ const questions = [
   {question:"Who is the best girl?", answer:"italian girl"},
   {question:"W Game is the best game?", answer:"1"},
   {question:"Will Ibrahim go to NUST?", answer:"100%"},
-  {question:"Who is coming in 2 minutes?", answer:"mehroz bhai"},
+  {question:"Who is coming in 3 minutes?", answer:"mehroz bhai"},
   {question:"Which is the best version of W Game?", answer:"yet to come"},
   {question:"Who is the biggest fraud?", answer:"poty brothers"},
   {question:"What is the strongest material?", answer:"rod"},
   {question:"Which thing has the most weight on earth?", answer:"khali"},
   {question:"Guess where am I?", answer:"dubai"},
   {question:"What is the best time?", answer:"2:45 am"},
-  {question:"Which is the most dangerous attack?", answer:"gujrati attack"}
+  {question:"Which is the most dangerous attack?", answer:"gujrati attack"},
+  {question:"You dont know me son?", answer:"bilal"}
   //{question:"", answer:""}
   // {question:"", answer:""}
 ];
